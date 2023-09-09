@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Sustainability Map",
+    "version": "1.0",
+    "description": "Make Google Maps more sustainable!",
+    "permissions": ["activeTab"],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "browser_action": {
+      "default_popup": "popup.html"
+    }
+  }
+  
