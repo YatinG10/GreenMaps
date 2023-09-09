@@ -1,4 +1,3 @@
-
 function mapValuesToRange(arr, minRange, maxRange) {
     const minArrValue = Math.min(...arr);
     const maxArrValue = Math.max(...arr);
@@ -31,10 +30,15 @@ function calculateTransportationScore(carDist, carTime, transitDist, transitTime
     walkingTime = times[2]
     bikeTime = times[3]
 
-    carScore = 100 - carDist - carTime
-    transitScore = 100 - transitDist - transitTime
+    carScore = (100 - carDist - carTime) * 0.8
+    transitScore = (100 - transitDist - transitTime) *0.9
     walkingScore = 100 - walkingDist - walkingTime
     bikeScore = 100 - bikeDist - bikeTime
+
+ 
+
+
+
 
 
 
@@ -76,14 +80,14 @@ const transitEnvImpact = 10;
 const walkingEnvImpact = 1;
 const bikeEnvImpact = 5;
 
-const carDist = 50;
-const carTime = 60;
-const transitDist = 30;
-const transitTime = 45;
-const walkingDist = 0;
-const walkingTime = 30;
-const bikeDist = 10;
-const bikeTime = 20;
+const carDist = 96.8;
+const carTime = 1.41;
+const transitDist = 96.8;
+const transitTime = 2.36;
+const walkingDist = 96.3;
+const walkingTime = 29;
+const bikeDist = 103;
+const bikeTime = 9;
 
 const result = calculateTransportationScore(
     carDist,
