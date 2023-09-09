@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sexy Scatter Plot</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="max-width: 600px; margin: 0 auto;">
+        <canvas id="mySexyScatterChart"></canvas>
+    </div>
+
+    <script>
+        // Your function that returns the data
+        const data = {
+            bestTransportationMode: 'car',
+            carScore: 12,
+            transitScore: 19,
+            walkingScore: 3,
+            bikeScore: 5,
+        };
+
+        // Extract data from the object
+        const labels = ['Car', 'Transit', 'Walking', 'Bike'];
+        const xValues = labels;
+        const yValues = generateWavyYValues(labels.length);
+
+        function generateWavyYValues(numPoints) {
+            const frequency = 1.5; // Adjust the frequency of the wave
+            const amplitude = 5;   // Adjust the amplitude of the wave
+            const yValues = [];
+
+            for (let i = 0; i < numPoints; i++) {
+                const x = i;
+                const y = amplitude * Math.sin(frequency * x) + data.carScore; // Wavy pattern
+                yValues.push(y);
+            }
+
+            return yValues;
+        }
+
+        const ctx = document.getElementById('mySexyScatterChart');
+
+        new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Sexy Scatter Plot',
+                    data: xValues.map((x, index) => ({ x, y: yValues[index] })),
+                    pointBackgroundColor: 'rgba(0, 128, 0, 0.8)', // Sexy green points with transparency
+                    pointBorderColor: 'rgba(255, 0, 0, 0.8)', // Sexy red point borders with transparency
+                    pointRadius: 15, // Larger point size for extra sexiness
+                    borderWidth: 3, // Wider border width
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'category',
+                        labels: labels,
+                        grid: {
+                            display: false, // Hide grid lines
+                        },
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: false, // Hide grid lines
+                        },
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false, // Hide the legend
+                    },
+                },
+                animation: {
+                    duration: 2000, // Slow animation for a sensual effect
+                },
+                responsive: true,
+            }
+        });
+    </script>
+</body>
+</html>

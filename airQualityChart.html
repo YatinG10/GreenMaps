@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Units Information</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Create a canvas element to render the chart -->
+    <canvas id="unitChart" width="400" height="200"></canvas>
+
+    <script>
+        // Data
+        var data = {
+            labels: ["PM2.5", "PM10", "Ozone O3", "Nitrogen dioxide NO2", "Sulfur dioxide SO2", "Carbon monoxide CO"],
+            datasets: [{
+                label: 'Units',
+                data: [2.5, 10, 3, 2, 2, 0.01], // Example values for the units (you can replace them with your own data)
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Configuration options
+        var options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Create a bar chart
+        var ctx = document.getElementById('unitChart').getContext('2d');
+        var unitChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+    </script>
+</body>
+</html>
