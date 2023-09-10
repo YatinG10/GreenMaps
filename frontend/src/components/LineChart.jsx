@@ -24,31 +24,32 @@ const LineChart = () => {
   return (
     <ResponsiveLine
       data={data}
+      colors={theme.palette.success.main}
       theme={{
         axis: {
           domain: {
             line: {
-              stroke: theme.palette.grey[100],
+              stroke: "#000000",
             },
           },
           legend: {
             text: {
-              fill: theme.palette.grey[100],
+              fill: "#000000",
             },
           },
           ticks: {
             line: {
-              stroke: theme.palette.grey[100],
+              stroke: "#000000",
               strokeWidth: 1,
             },
             text: {
-              fill: theme.palette.grey[100],
+              fill: "#000000",
             },
           },
         },
         legends: {
           text: {
-            fill: theme.palette.grey[100],
+            fill: "#000000",
           },
         },
         tooltip: {
@@ -69,7 +70,7 @@ const LineChart = () => {
         tickSize: 0,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "X Axis", // You can customize the legend text here
+        legend: "Number of Trips", // You can customize the legend text here
         legendOffset: 36,
         legendPosition: "middle",
       }}
@@ -79,7 +80,7 @@ const LineChart = () => {
         tickSize: 3,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "Y Axis", // You can customize the legend text here
+        legend: "Sustainability Score", // You can customize the legend text here
         legendOffset: -40,
         legendPosition: "middle",
       }}
