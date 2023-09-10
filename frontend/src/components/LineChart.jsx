@@ -1,11 +1,25 @@
+import React from "react";
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
-import { tokens } from "../theme";
-import { mockLineData as data } from "../data/mockData";
 
-const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
+const data = [
+  {
+    id: "line",
+    data: [
+      { x: 0, y: 90 },
+      { x: 1, y: 86 },
+      { x: 2, y: 76 },
+      { x: 3, y: 81 },
+      { x: 4, y: 70 },
+      { x: 5, y: 84 },
+      { x: 6, y: 74 },
+      { x: 7, y: 79 },
+    ],
+  },
+];
+
+const LineChart = () => {
   const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
 
   return (
     <ResponsiveLine
@@ -14,45 +28,38 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
         axis: {
           domain: {
             line: {
-              stroke: colors.grey[100],
+              stroke: theme.palette.grey[100],
             },
           },
           legend: {
             text: {
-              fill: colors.grey[100],
+              fill: theme.palette.grey[100],
             },
           },
           ticks: {
             line: {
-              stroke: colors.grey[100],
+              stroke: theme.palette.grey[100],
               strokeWidth: 1,
             },
             text: {
-              fill: colors.grey[100],
+              fill: theme.palette.grey[100],
             },
           },
         },
         legends: {
           text: {
-            fill: colors.grey[100],
+            fill: theme.palette.grey[100],
           },
         },
         tooltip: {
           container: {
-            color: colors.primary[500],
+            color: theme.palette.primary[500],
           },
         },
       }}
-      colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }} // added
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-      xScale={{ type: "point" }}
-      yScale={{
-        type: "linear",
-        min: "auto",
-        max: "auto",
-        stacked: true,
-        reverse: false,
-      }}
+      xScale={{ type: "linear", min: 0, max: "auto" }}
+      yScale={{ type: "linear", min: 0, max: "auto" }}
       yFormat=" >-.2f"
       curve="catmullRom"
       axisTop={null}
@@ -62,17 +69,17 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
         tickSize: 0,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "transportation", // added
+        legend: "X Axis", // You can customize the legend text here
         legendOffset: 36,
         legendPosition: "middle",
       }}
       axisLeft={{
         orient: "left",
-        tickValues: 5, // added
+        tickValues: 5,
         tickSize: 3,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "count", // added
+        legend: "Y Axis", // You can customize the legend text here
         legendOffset: -40,
         legendPosition: "middle",
       }}

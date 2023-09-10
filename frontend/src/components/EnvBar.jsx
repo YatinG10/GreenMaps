@@ -1,33 +1,26 @@
 import React from "react";
 import { ResponsiveBar } from "@nivo/bar";
 
-const BarChart = () => {
+const EnvBar = () => {
   // Data
   const data = [
     {
-      chemical: "PM2.5",
-      value: 2.5,
+      chemical: "Car",
+      value: 87,
     },
     {
-      chemical: "PM10",
-      value: 10,
+      chemical: "Transit",
+      value: 90,
     },
     {
-      chemical: "Ozone O3",
-      value: 3,
+      chemical: "Bike",
+      value: 61,
     },
     {
-      chemical: "Nitrogen dioxide NO2",
-      value: 2,
-    },
-    {
-      chemical: "Sulfur dioxide SO2",
-      value: 2,
-    },
-    {
-      chemical: "Carbon monoxide CO",
-      value: 0.01,
-    },
+      chemical: "Walk",
+      value: 49,
+    }
+
   ];
 
   return (
@@ -58,4 +51,4 @@ const BarChart = () => {
   );
 };
 
-export default BarChart;
+export default EnvBar;

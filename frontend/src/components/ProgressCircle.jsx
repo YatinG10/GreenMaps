@@ -1,10 +1,14 @@
+import React from "react";
 import { Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 
-const ProgressCircle = ({ progress = "0.75", size = "40" }) => {
+const ProgressCircle = ({ airQualityScore = 87, size = 40 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  // Calculate the progress based on the air quality score (assuming a range of 0-100)
+  const progress = airQualityScore / 100;
   const angle = progress * 360;
+
   return (
     <Box
       sx={{
