@@ -1,23 +1,19 @@
 {
-    "manifest_version": 3,
-    "name": "Sustainability Map",
-    "version": "1.0",
-    "description": "Make Google Maps more sustainable!",
-    "permissions": ["activeTab"],
-    "action": {
-      "default_popup": "popup.html"
-    },
-    "browser_action": {
-      "default_popup": "popup.html"
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": [
-          "content.js"
-        ]
-      }
-    ]
-  }
-  
-  
+  "manifest_version": 3,
+  "name": "GreenMaps",
+  "version": "1.0",
+  "description": "Toggle to make the screen greenish.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png"
+    }
+  },
+  "content_scripts": [
+    {
+        "matches": ["*://www.google.com/maps/*"],
+        "js": ["content.js"]
+    }
+  ]
+}

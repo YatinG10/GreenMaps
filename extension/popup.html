@@ -1,20 +1,47 @@
-<!-- popup.html -->
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Sustainability Map</title>
-    <link rel="stylesheet" type="text/css" href="popup.css">
-  </head>
-  <body>
-    <div class="container">
-      <h1 id="extension-title">GreenMaps</h1> <!-- Add this line for the title -->
-      <h2>Sustainability Map</h2>
-      <label class="switch">
-        <input type="checkbox" id="toggleMap">
-        <span class="slider round"></span>
-      </label>
-    </div>
-    <script src="popup.js"></script>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+    <title>GreenMaps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 250px;
+        }
+        #header {
+            display: flex;
+            align-items: center;
+        }
+        #logo {
+            width: 32px;
+            height: 32px;
+            margin-right: 8px;
+        }
+        #description {
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+  <div id="header">
+      <img id="logo" src="icon2.png" alt="GreenMaps Logo">
+      <h1>GreenMaps</h1>
+  </div>
+  <div id="description">
+      Experience Google Maps in a sustainable way! Enjoy the green paths and the environment-friendly theme.
+  </div>
+  <button id="toggleBtn">Toggle Green Effect</button>
+  <button id="statsBtn">View Past Statistics</button>
+  <script src="popup.js"></script>
+  <!-- Score Display Elements -->
+  <div id="scores">
+    <h3>Transportation Scores:</h3>
+    <div id="carScore">Car Score: -</div>
+    <div id="transitScore">Transit Score: -</div>
+    <div id="walkingScore">Walking Score: -</div>
+    <div id="bikeScore">Bike Score: -</div>
+</div>
+</body>
 </html>

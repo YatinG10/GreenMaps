@@ -1,90 +1,44 @@
-/* popup.css */
-
-/* Center the content */
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 600px;
-    width: 350px;
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Style the toggle switch */
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 34px;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-  }
-  
-  input:checked + .slider {
-    background-color: #4caf50;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #4caf50;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
-  
-  /* Style the label text */
-  h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  /* Style the label text */
-  .round {
-    border-radius: 34px;
-  }
+  font-family: Arial, sans-serif;
+  width: 250px;
+  background: linear-gradient(
+    106.37deg,
+    #0ea47a 29.63%,
+    /* #12d39d 51.55%, */
+    #0ea47a 90.85%
+  );
+  color: #ffffff; /* Setting a contrasting text color for readability */
+  padding: 10px; /* Some padding to give it a bit of space */
+  box-sizing: border-box;
+}
 
- /* Style the header */
-header {
-    background-color: #4caf50; /* Header background color */
-    padding: 10px 0; /* Adjust padding as needed */
-    text-align: center;
-    color: white; /* Text color for the header */
-  }
-  
-  /* Style the extension title within the header */
-  #extension-title {
-    font-size: 24px; /* Adjust the font size as needed */
-    margin: 0; /* Remove margin to align with top-left corner */
-    padding: 0; /* Reset padding to avoid extra spacing */
-  }
-  
+#header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+#description {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #ffffff;
+  color: #0ea47a; /* Using the background color for button text to keep the theme */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #f2f2f2;
+}
