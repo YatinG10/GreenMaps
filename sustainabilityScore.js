@@ -10,7 +10,7 @@ function mapValuesToRange(arr, minRange, maxRange) {
     return mappedValues;
   }
 
-function calculateTransportationScore(carDist, carTime, transitDist, transitTime, walkingDist, walkingTime, bikeDist, bikeTime) {
+export function calculateTransportationScore(carDist, carTime, transitDist, transitTime, walkingDist, walkingTime, bikeDist, bikeTime) {
     dists = [carDist, transitDist,walkingDist,bikeDist]
     times = [carTime, transitTime, walkingTime, bikeTime]
 

@@ -1,3 +1,5 @@
+import sustain from "../sustainabilityScore.js"
+
 document.getElementById("toggleBtn").addEventListener("click", function() {
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         let currentTab = tabs[0];
@@ -49,7 +51,7 @@ chrome.runtime.onMessage.addListener(function(response) {
     const bikeTime = parseFloat(response.bicycling.time.split(" ")[0]);
 
     // Calculate transportation scores using the provided functions
-    const scores = calculateTransportationScore(carDist, carTime, transitDist, transitTime, walkingDist, walkingTime, bikeDist, bikeTime);
+    const scores = sustain.calculateTransportationScore(carDist, carTime, transitDist, transitTime, walkingDist, walkingTime, bikeDist, bikeTime);
     
     // Displaying the results on the popup
     // You can add elements to `popup.html` to display the scores, for example:
@@ -59,67 +61,15 @@ chrome.runtime.onMessage.addListener(function(response) {
     document.getElementById("bikeScore").innerText = `Bike Score: ${scores.bikeScore}`;
 });
 
-function mapValuesToRange(arr, minRange, maxRange) {
-    const minArrValue = Math.min(...arr);
-    const maxArrValue = Math.max(...arr);
-  
-    const mappedValues = arr.map((value) => {
-      const mappedValue = ((value - minArrValue) / (maxArrValue - minArrValue)) * (maxRange - minRange) + minRange;
-      return Math.round(mappedValue); // Round the result to the nearest integer
+document.getElementById("toggleBtn").addEventListener("click", function() {
+    chrome.scripting.executeScript({
+        target: { tabId: currentTabId },
+        file: 'content.js'
+    }, () => {
+        // Send a message to content.js to toggle the green circle
+        chrome.scripting.sendMessage({
+            target: { tabId: currentTabId },
+            data: { action: 'toggleGreenCircle' }
+        });
     });
-  
-    return mappedValues;
-  }
-
-function calculateTransportationScore(carDist, carTime, transitDist, transitTime, walkingDist, walkingTime, bikeDist, bikeTime) {
-    dists = [carDist, transitDist,walkingDist,bikeDist]
-    times = [carTime, transitTime, walkingTime, bikeTime]
-
-
-    
-    dists = mapValuesToRange(dists, 0, 25)
-
-    carDist = dists[0]
-    transitDist = dists[1]
-    walkingDist = dists[2]
-    bikeDist = dists[3]
-
-    times = mapValuesToRange(times, 0, 25)
-
-    carTime = times[0]
-    transitTime = times[1]
-    walkingTime = times[2]
-    bikeTime = times[3]
-
-    carScore = (100 - carDist - carTime) * 0.8
-    transitScore = (100 - transitDist - transitTime) *0.9
-    walkingScore = 100 - walkingDist - walkingTime
-    bikeScore = 100 - bikeDist - bikeTime
-
-    // Determine the best mode of transportation
-    let bestTransportationMode = "Car";
-    let highestScore = carScore;
-
-    if (transitScore > highestScore) {
-        bestTransportationMode = "Transit";
-        highestScore = transitScore;
-    }
-
-    if (walkingScore > highestScore) {
-        bestTransportationMode = "Walking";
-        highestScore = walkingScore;
-    }
-
-    if (bikeScore > highestScore) {
-        bestTransportationMode = "Bike";
-        highestScore = bikeScore;
-    }
-
-    return {
-        bestTransportationMode: bestTransportationMode,
-        carScore: carScore,
-        transitScore: transitScore,
-        walkingScore: walkingScore,
-        bikeScore: bikeScore,
-    };
-}
+});
