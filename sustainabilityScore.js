@@ -1,4 +1,4 @@
-function mapValuesToRange(arr, minRange, maxRange) {
+export function mapValuesToRange(arr, minRange, maxRange) {
     const minArrValue = Math.min(...arr);
     const maxArrValue = Math.max(...arr);
   
